@@ -27,3 +27,22 @@ To disable web storage backup to iCloud, set the BackupWebStorage preference to 
 
 2015-07-04 14:37:21.728 Hello World[7270:217938] Resetting plugins due to page load.
 2015-07-04 14:37:21.870 Hello World[7270:217938] Finished load of: file:///Users/palid/Library/Developer/CoreSimulator/Devices/4E966B4F-A14D-40FA-BBA4-C7D29A17FFA1/data/Containers/Bundle/Application/E63DA4B4-F676-423D-934C-CBD02F10C5A6/Hello%20World.app/www/index.html
+2015-07-04 15:48:27.527 Hello World[11662:600108] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/palid/Library/Developer/CoreSimulator/Devices/4E966B4F-A14D-40FA-BBA4-C7D29A17FFA1/data/Containers/Data/Application/5CA809A6-CF8F-4714-82C0-DE3B11888773/Library/Cookies/Cookies.binarycookies
+2015-07-04 15:48:27.714 Hello World[11662:600108] Apache Cordova native platform version 3.8.0 is starting.
+2015-07-04 15:48:27.715 Hello World[11662:600108] Multi-tasking -> Device: YES, App: YES
+2015-07-04 15:48:27.726 Hello World[11662:600108] Unlimited access to network resources
+2015-07-04 15:48:27.733 Hello World[11662:600108] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-07-04 15:48:28.106 Hello World[11662:600108] Bluetooth Serial Cordova Plugin - BLE version
+2015-07-04 15:48:28.106 Hello World[11662:600108] (c)2013-2014 Don Coleman
+2015-07-04 15:48:28.110 Hello World[11662:600108] [CDVTimer][bluetoothserial] 4.269004ms
+2015-07-04 15:48:28.111 Hello World[11662:600108] [CDVTimer][TotalPluginStartup] 4.495025ms
+2015-07-04 15:48:28.203 Hello World[11662:600108] Status of CoreBluetooth central manager changed 2 (State BLE unsupported (CBCentralManagerStateResetting))
+2015-07-04 15:48:28.265 Hello World[11662:600108] Resetting plugins due to page load.
+2015-07-04 15:48:28.416 Hello World[11662:600108] Finished load of: file:///Users/palid/Library/Developer/CoreSimulator/Devices/4E966B4F-A14D-40FA-BBA4-C7D29A17FFA1/data/Containers/Bundle/Application/989F0C51-651F-4C96-A827-FAE9DEC1EF56/Hello%20World.app/www/index.html

@@ -19,13 +19,14 @@
 
 var UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
 var app = {
+  ble: false,
   // Application Constructor
   initialize: function() {
     this.bindEvents();
   },
   onSuccesfulBle: function(e) {
     this.ble = true;
-    bluetoothSerial.write('jestem ziemniakiem :D');
+    bluetoothSerial.write(Math.random() * Math.random() * Math.random());
   },
   onFailBle: function(e) {
     this.ble = false;
@@ -33,40 +34,19 @@ var app = {
   setupBle: function() {
     bluetoothSerial.connect(UUID, this.onSuccesfulBle.bind(this), this.onFailBle.bind(this));
   },
-  // Bind Event Listeners
-  //
-  // Bind any events that are required on startup. Common events are:
-  // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
   },
-  // deviceready Event Handler
-  //
-  // The scope of 'this' is the event. In order to call the 'receivedEvent'
-  // function, we must explicitly call 'app.receivedEvent(...);'
   onDeviceReady: function() {
-    var self = this;
-    app.receivedEvent('deviceready');
-    document.querySelector('#boom').addEventListener('click', function(e) {
-      self.explode();
-      e.preventDefault();
-      return false;
-    });
-  },
-  // Update DOM on a Received Event
-  receivedEvent: function(id) {
-    var parentElement = document.getElementById(id);
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
-
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');
-
-    console.log('Received Event: ' + id);
+      $('#explode').on('click', function(e) {
+        app.explode();
+      });
   },
   explode: function() {
-    if (!ble) {
+    if (!this.ble) {
       this.setupBle();
+    } else {
+      bluetoothSerial.write(Math.random() * Math.random() * Math.random());
     }
     this.exploded = true;
   }

@@ -17,57 +17,61 @@
  * under the License.
  */
 
-var UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+var MAC = "F2:70:4F:A8:ED:BB";
+var MAC2 = "FF:BB:AF:DE:4C:C9";
+
+var WRITE_SERVICE = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+var CHARACTERISTICS = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
+
+// var UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+
+// ASCII only
+function stringToBytes(string) {
+   var array = new Uint8Array(string.length);
+   for (var i = 0, l = string.length; i < l; i++) {
+       array[i] = string.charCodeAt(i);
+    }
+    return array.buffer;
+}
+
+// ASCII only
+function bytesToString(buffer) {
+    return String.fromCharCode.apply(null, new Uint8Array(buffer));
+}
+
+exploded = false;
 var app = {
+  AUTHED: false,
   // Application Constructor
   initialize: function() {
     this.bindEvents();
   },
   onSuccesfulBle: function(e) {
-    this.ble = true;
-    bluetoothSerial.write('jestem ziemniakiem :D');
+    this.AUTHED = true;
+    ble.write(stringToBytes("BOOM"), WRITE_SERVICE, CHARACTERISTICS, function success(){
+      exploded = true;
+      console.log("SUCCESS BOOM");
+      console.log(arguments);
+    }, function fail() {
+      console.log('welp');
+    });
   },
   onFailBle: function(e) {
-    this.ble = false;
+    this.AUTHED = false;
   },
   setupBle: function() {
-    bluetoothSerial.connect(UUID, this.onSuccesfulBle.bind(this), this.onFailBle.bind(this));
+    ble.connect(MAC, this.onSuccesfulBle.bind(this), this.onFailBle.bind(this));
   },
-  // Bind Event Listeners
-  //
-  // Bind any events that are required on startup. Common events are:
-  // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
   },
-  // deviceready Event Handler
-  //
-  // The scope of 'this' is the event. In order to call the 'receivedEvent'
-  // function, we must explicitly call 'app.receivedEvent(...);'
   onDeviceReady: function() {
-    var self = this;
-    app.receivedEvent('deviceready');
-    document.querySelector('#boom').addEventListener('click', function(e) {
-      self.explode();
-      e.preventDefault();
-      return false;
-    });
-  },
-  // Update DOM on a Received Event
-  receivedEvent: function(id) {
-    var parentElement = document.getElementById(id);
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
-
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');
-
-    console.log('Received Event: ' + id);
+      $('#explode').on('click', function(e) {
+        app.explode();
+      });
   },
   explode: function() {
-    if (!ble) {
-      this.setupBle();
-    }
+    this.setupBle();
     this.exploded = true;
   }
 };

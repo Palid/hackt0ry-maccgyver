@@ -19,7 +19,7 @@
                 "parents": {
                     "/widget": [
                         {
-                            "xml": "<feature name=\"BluetoothSerial\"><param name=\"ios-package\" onload=\"true\" value=\"MEGBluetoothSerial\" /></feature>",
+                            "xml": "<feature name=\"BLE\"><param name=\"ios-package\" onload=\"true\" value=\"BLECentralPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -28,7 +28,7 @@
         }
     },
     "installed_plugins": {
-        "com.megster.cordova.bluetoothserial": {
+        "com.megster.cordova.ble": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
